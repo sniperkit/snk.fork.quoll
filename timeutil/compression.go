@@ -1,9 +1,14 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package timeutil
 
 import (
-	"time"
 	"fmt"
 	"math"
+	"time"
 )
 
 func Compress(base time.Time, now time.Time) uint32 {

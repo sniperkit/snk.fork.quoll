@@ -1,12 +1,19 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package evtstore
 
 import (
 	"testing"
-	"github.com/stretchr/testify/require"
-	"github.com/blang/vfs/memfs"
 	"time"
-	"github.com/v2pro/quoll/timeutil"
-	"github.com/v2pro/quoll/discr"
+
+	"github.com/blang/vfs/memfs"
+	"github.com/stretchr/testify/require"
+
+	"github.com/sniperkit/snk.fork.quoll/discr"
+	"github.com/sniperkit/snk.fork.quoll/timeutil"
 )
 
 func init() {

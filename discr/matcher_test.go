@@ -1,7 +1,13 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package discr
 
 import (
 	"testing"
+
 	"github.com/stretchr/testify/require"
 )
 

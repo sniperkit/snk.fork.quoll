@@ -1,23 +1,29 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package discr
 
 import (
-	"github.com/flier/gohs/hyperscan"
 	"regexp"
-	"github.com/v2pro/plz/countlog"
 	"unsafe"
+
+	"github.com/flier/gohs/hyperscan"
+	"github.com/v2pro/plz/countlog"
 )
 
 type patternGroup struct {
-	hdb hyperscan.BlockDatabase
-	exps []*regexp.Regexp
+	hdb     hyperscan.BlockDatabase
+	exps    []*regexp.Regexp
 	scratch *hyperscan.Scratch
-	keys [][]byte
+	keys    [][]byte
 }
 
 type patternMatch struct {
 	match []byte
-	exp *regexp.Regexp
-	key []byte
+	exp   *regexp.Regexp
+	key   []byte
 }
 
 type patternMatches []patternMatch
@@ -80,10 +86,10 @@ func newPatternGroup(patterns map[string]string) (*patternGroup, error) {
 		return nil, err
 	}
 	return &patternGroup{
-		hdb: hdb,
-		exps: exps,
+		hdb:     hdb,
+		exps:    exps,
 		scratch: scratch,
-		keys: keys,
+		keys:    keys,
 	}, nil
 }
 
@@ -92,11 +98,11 @@ func (pg *patternGroup) match(bytes []byte) (patternMatches, error) {
 		return nil, nil
 	}
 	var matches patternMatches
-	err := pg.hdb.Scan(bytes, pg.scratch, func(id uint, from, to uint64, flags uint, context interface{}) error{
+	err := pg.hdb.Scan(bytes, pg.scratch, func(id uint, from, to uint64, flags uint, context interface{}) error {
 		matches = append(matches, patternMatch{
 			match: bytes[from:to],
-			exp: pg.exps[id],
-			key: pg.keys[id],
+			exp:   pg.exps[id],
+			key:   pg.keys[id],
 		})
 		return nil
 	}, nil)

@@ -1,15 +1,21 @@
-package lz4
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
 
-import (
-	_ "github.com/cockroachdb/c-lz4"
-	"unsafe"
-)
+package lz4
 
 // #cgo CPPFLAGS: -I ../../../cockroachdb/c-lz4/internal/lib
 // #cgo darwin LDFLAGS: -Wl,-undefined -Wl,dynamic_lookup
 // #cgo !darwin LDFLAGS: -Wl,-unresolved-symbols=ignore-all
 // #include "lz4.h"
 import "C"
+
+import (
+	"unsafe"
+
+	_ "github.com/cockroachdb/c-lz4"
+)
 
 func VersionNumber() int {
 	return int(C.LZ4_versionNumber())

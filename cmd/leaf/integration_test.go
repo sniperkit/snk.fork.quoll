@@ -1,15 +1,22 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package main
 
 import (
-	"testing"
-	"net/http"
-	"github.com/stretchr/testify/require"
-	"io/ioutil"
 	"bytes"
-	"time"
 	"fmt"
+	"io/ioutil"
+	"net/http"
 	"path"
-	"github.com/v2pro/quoll/evtstore"
+	"testing"
+	"time"
+
+	"github.com/stretchr/testify/require"
+
+	"github.com/sniperkit/snk.fork.quoll/evtstore"
 )
 
 func Test_list(t *testing.T) {

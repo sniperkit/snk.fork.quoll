@@ -1,6 +1,13 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package timeutil
 
-import "time"
+import (
+	"time"
+)
 
 var mockedNow *time.Time
 

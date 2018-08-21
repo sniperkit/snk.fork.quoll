@@ -1,14 +1,20 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package discr
 
 import (
-	"testing"
-	"regexp"
-	"github.com/stretchr/testify/require"
 	"fmt"
 	"io/ioutil"
-	"github.com/json-iterator/go"
-	"github.com/flier/gohs/hyperscan"
+	"regexp"
 	"runtime/debug"
+	"testing"
+
+	"github.com/flier/gohs/hyperscan"
+	"github.com/json-iterator/go"
+	"github.com/stretchr/testify/require"
 )
 
 func Test_regexp(t *testing.T) {
@@ -56,7 +62,7 @@ func Benchmark_regexp_batch(b *testing.B) {
 	p1 := `(?:"product_id":\s*(?P<product_id>\d+))`
 	p2 := `(?:"combo_type":\s*(?P<combo_type>\d+))`
 	p3 := `(?:"car_level":\s*"(?P<car_level>\d+)")`
-	re, err := regexp.Compile(p1+"|"+p2+"|"+p3)
+	re, err := regexp.Compile(p1 + "|" + p2 + "|" + p3)
 	if err != nil {
 		b.Error(err)
 		return
@@ -64,10 +70,9 @@ func Benchmark_regexp_batch(b *testing.B) {
 	b.ResetTimer()
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		re.FindAllSubmatch(text,-1)
+		re.FindAllSubmatch(text, -1)
 	}
 }
-
 
 func Benchmark_hyperscan(b *testing.B) {
 	content, err := ioutil.ReadFile("/home/xiaoju/sample.txt")

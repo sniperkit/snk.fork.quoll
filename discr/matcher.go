@@ -1,13 +1,19 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package discr
 
 import (
-	"github.com/json-iterator/go"
 	"bytes"
 	"errors"
-	"github.com/v2pro/plz/countlog"
+	"strings"
 	"sync"
 	"time"
-	"strings"
+
+	"github.com/json-iterator/go"
+	"github.com/v2pro/plz/countlog"
 )
 
 type EventBody []byte

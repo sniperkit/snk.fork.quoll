@@ -1,10 +1,16 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package lz4
 
 import (
-	"testing"
-	"github.com/stretchr/testify/require"
 	"io/ioutil"
+	"testing"
+
 	"github.com/pierrec/lz4"
+	"github.com/stretchr/testify/require"
 )
 
 func Test_VersionNumber(t *testing.T) {

@@ -1,19 +1,26 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package evtstore
 
 import (
+	"bytes"
+	"encoding/binary"
+	"errors"
+	"io"
+	"math"
 	"os"
-	"github.com/blang/vfs"
 	"path"
 	"time"
-	"io"
-	"encoding/binary"
+
+	"github.com/blang/vfs"
 	"github.com/v2pro/plz/countlog"
-	"errors"
-	"math"
-	"github.com/v2pro/quoll/lz4"
-	"github.com/v2pro/quoll/timeutil"
-	"bytes"
-	"github.com/v2pro/quoll/discr"
+
+	"github.com/sniperkit/snk.fork.quoll/discr"
+	"github.com/sniperkit/snk.fork.quoll/lz4"
+	"github.com/sniperkit/snk.fork.quoll/timeutil"
 )
 
 const fileHeaderSize = 7
@@ -78,7 +85,7 @@ func (blocks EventBlocks) Next() (EventBlockId, EventBlock, EventBlocks) {
 		panic("no more block")
 	}
 	blockId := EventBlockId(blocks[:blockIdSize])
-	blockHeader := EventBlock(blocks[blockIdSize:blockIdSize+blockHeaderSize])
+	blockHeader := EventBlock(blocks[blockIdSize : blockIdSize+blockHeaderSize])
 	next := blockIdSize + blockHeaderSize + blockHeader.CompressedSize()
 	block := EventBlock(blocks[blockIdSize:next])
 	return blockId, block, blocks[next:]

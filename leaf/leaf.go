@@ -1,15 +1,22 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package leaf
 
 import (
-	"net/http"
-	"io/ioutil"
 	"encoding/json"
-	"github.com/v2pro/plz/countlog"
-	"github.com/v2pro/quoll/evtstore"
-	"github.com/v2pro/quoll/discr"
-	"github.com/json-iterator/go"
-	"time"
+	"io/ioutil"
+	"net/http"
 	"strconv"
+	"time"
+
+	"github.com/json-iterator/go"
+	"github.com/v2pro/plz/countlog"
+
+	"github.com/sniperkit/snk.fork.quoll/discr"
+	"github.com/sniperkit/snk.fork.quoll/evtstore"
 )
 
 var store = evtstore.NewStore("/tmp/store")
@@ -182,4 +189,3 @@ func writeError(respWriter http.ResponseWriter, err error) {
 		return
 	}
 }
-

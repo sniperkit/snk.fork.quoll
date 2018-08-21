@@ -1,10 +1,16 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package discr
 
 import (
 	"net/http"
 	"time"
-	"github.com/v2pro/plz/countlog"
+
 	"github.com/json-iterator/go"
+	"github.com/v2pro/plz/countlog"
 )
 
 type tailedSession struct {
@@ -101,7 +107,7 @@ func Tail(respWriter http.ResponseWriter, sessionType string, showSession bool, 
 func tryMatcher(session []byte, matcher *sessionMatcher) (patternMatches, error) {
 	iter := jsoniter.ConfigFastest.BorrowIterator(session)
 	defer jsoniter.ConfigFastest.ReturnIterator(iter)
-	collector := &featureCollector{iter: iter, session: session, sessionMatcher: matcher, noTail:true}
+	collector := &featureCollector{iter: iter, session: session, sessionMatcher: matcher, noTail: true}
 	collector.colSession()
 	if iter.Error != nil {
 		return nil, iter.Error
